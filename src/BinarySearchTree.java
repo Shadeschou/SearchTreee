@@ -34,6 +34,7 @@ public class BinarySearchTree {
 
     }
 
+
     public class Node {
 
         int key;
@@ -42,14 +43,24 @@ public class BinarySearchTree {
         Node leftChild;
         Node rightChild;
 
-        Node(int key, String name){
+        Node(int key, String name) {
             this.key = key;
 
             this.name = name;
         }
 
-        public String toString(){
+        public String toString() {
             return name + "has a key " + key;
+        }
+    }
+
+    public Node searchRecursively(int key, Node node) {
+        if (node == null || node.key == key) {
+            return node;
+        } else if (key < node.key) {
+            return searchRecursively(key, node.leftChild);
+        } else {
+            return searchRecursively(key, node.rightChild);
         }
     }
 }
